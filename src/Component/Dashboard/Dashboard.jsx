@@ -13,10 +13,12 @@ const Dashboard = () => {
     return (
         <div className="container mx-auto flex  md:flex-row flex-col items-center">
 
-            <div className="hidden px-3 py-4 w-52    shadow-lg">
+            <div className="hidden px-3 py-4 w-52   lg:block shadow-lg">
                 <ul>
-                    <li> <Link to="/dashboard/mySelectedClasses">My Selected Classes</Link></li>
-                    <li> <Link to="/dashboard/myEnrolledCourse">My Enrolled Course</Link></li>
+                    <li> <Link className="btn my-1 w-full " to="/dashboard/mySelectedClasses">My Selected Classes</Link></li>
+                    <li> <Link className="btn my-1 w-full " to="/dashboard/myEnrolledCourse">My Enrolled Course</Link></li>
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/studentPayment">Payment</Link></li>
+               
                 </ul>
                 
 

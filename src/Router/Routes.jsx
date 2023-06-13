@@ -10,6 +10,7 @@ import Signup from "../Component/Shared/Signup";
 import Dashboard from "../Component/Dashboard/Dashboard";
 import MySelectedClasses from "../Component/Dashboard/MySelectedClasses";
 import MyEnrolledClasses from "../Component/Dashboard/MyEnrolledClasses";
+import Payment from "../Component/Dashboard/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
                     {
                         path: '/dashboard/myEnrolledCourse',
                         element:<MyEnrolledClasses></MyEnrolledClasses>
+                    },
+                    {
+                        path: '/dashboard/studentPayment',
+                        element:<Payment></Payment>
                     },
                 ]
             },

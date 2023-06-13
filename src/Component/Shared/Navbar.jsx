@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/navLogo.png'
 import 'react-modern-drawer/dist/index.css'
-// import { FaRegUserCircle } from 'react-icons/fa'
-// import { AuthContext } from "../Pages/Provider/AuthProvider";
+import { FaRegUserCircle } from 'react-icons/fa'
+import { AuthContext } from "../Pages/Provider/AuthProvider";
 import React from "react";
-// import { useContext } from "react";
+import { useContext } from "react";
 import Drawer from 'react-modern-drawer'
 
 const Navbar = () => {
@@ -16,8 +16,8 @@ const Navbar = () => {
     }
     const handleLinkClick = () => {
         setIsOpen(false);
-      };
-    // const { user, handleSignOut } = useContext(AuthContext)
+    };
+    const { user, handleSignOut } = useContext(AuthContext)
     return (
         <div>
             <header className=" body-font">
@@ -37,7 +37,7 @@ const Navbar = () => {
                                 <Link onClick={handleLinkClick} to="/home" className='text-center  font-bold text-xl  flex'> <img className='w-16 mr-2' src={logo} alt="" />EduLine</Link>
 
                                 <ul className="menu  px-1">
-                                    <li> <Link onClick={handleLinkClick}  to='/'><a>Home</a></Link></li>
+                                    <li> <Link onClick={handleLinkClick} to='/'><a>Home</a></Link></li>
                                     <li> <Link onClick={handleLinkClick} to='/'><a>Instructors</a></Link></li>
                                     <li> <Link onClick={handleLinkClick} to='/'> <a>Classes</a></Link></li>
 
@@ -48,7 +48,8 @@ const Navbar = () => {
                                         </div>
                                         <div className="collapse-content text-white">
                                             <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/mySelectedClasses'>My selected classes</Link></li>
-                                            <li className="text-white"><Link  onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/studentPayment'>Payment</Link></li>
                                         </div>
                                     </div>
                                 </ul>
@@ -64,20 +65,29 @@ const Navbar = () => {
 
 
 
-                        <div className="navbar    bg-base-100  justify-between">
+                        <div className="navbar  flex items-center  bg-base-100  justify-between">
                             <div className="navbar-start">
                                 <Link onClick={handleLinkClick} to="/home" className="normal-case text-xl flex  " > <img className='w-16 mr-2' src={logo} alt="" /> EduLine</Link>
                             </div>
 
 
-                            <div className="navbar-end hidden lg:flex">
+                            <div className="navbar-center hidden lg:flex">
                                 <ul className="menu menu-horizontal px-1">
                                     <li><Link onClick={handleLinkClick} to='/'><a>Home</a></Link></li>
                                     <li><Link onClick={handleLinkClick} to='/'><a>Instructors</a></Link></li>
                                     <li><Link onClick={handleLinkClick} to='/'> <a>Classes</a></Link></li>
-                                    <li><Link  onClick={handleLinkClick} to='/dashboard'><a>Dashboard</a></Link></li>
-
+                                    <li><Link onClick={handleLinkClick} to='/dashboard'><a>Dashboard</a></Link></li>
                                 </ul>
+                            </div>
+                            <div className="navbar-end gap-2 flex justify-center items-center ">
+                                <FaRegUserCircle style={{ fontSize: '2rem' }} />
+                                {
+                                    user ?
+                                        <Link to='/signup'><button onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5">Sign Out</button></Link>
+                                        :
+                                        <Link to='/login'><button className="btn btn-outline btn-primary text-opacity-70 font-bold px-5">Sign in</button></Link>
+
+                                }
                             </div>
 
 
