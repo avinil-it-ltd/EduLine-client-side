@@ -15,14 +15,18 @@ const PopularInstructor = () => {
             })
             .catch(error => console.log(error))
     }, [])
+const selectInstructor = instructors?.slice(0,6);
 
     return (
-        <div>
-            <h1 className="text-primary text-opacity-70 font-bold font-mono text-4xl text-center my-9">Popular Instructors Section</h1>
-
+        <div className="my-12">
+            <div className="font-mono text-center  my-9">
+                <h1 className="text-primary text-opacity-70 font-bold  text-4xl ">Popular Instructors Section</h1>
+                <p className="my-4 "><span className="text-orange-500">As language instructors</span>, you hold a significant role in shaping the language <br /> skills and cultural understanding of your students. Your dedication and expertise <br />
+                 are key in creating an effective and inspiring learning environment.</p>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
-                    instructors?.map(instructor => <>
+                    selectInstructor?.map(instructor => <>
 
                         <div>
 
