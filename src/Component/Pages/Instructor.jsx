@@ -7,21 +7,33 @@ const Instructor = () => {
     const [instructors, setInstructor] = useState([]);
 
     useEffect(() => {
-        fetch('/public/instructor.json')
-            .then(res => res.json())
-            .then(data => {
-                setInstructor(data.instructors);
+        const fetchData = async () => {
+            const response = await fetch(`http://localhost:5000/api/instructors`);
+            if (response.ok) {
+                const data = await response.json();
+                setInstructor(data);
+            } else {
+                // Error occurred while fetching data
+                console.error('Error fetching data!');
+            }
+        };
 
-            })
-            .catch(error => console.log(error))
-    }, [])
+        fetchData();
+    }, []);
+
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/instructors')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setInstructor(data);
+
+    //         })
+    //         .catch(error => console.log(error))
+    // }, [])
 
     return (
         <div className="my-12 mx-auto container">
-            <div className="font-mono text-center  my-9">
-                <p className="my-4 "><span className="text-orange-500">As language instructors</span>, you hold a significant role in shaping the language <br /> skills and cultural understanding of your students. Your dedication and expertise <br />
-                 are key in creating an effective and inspiring learning environment.</p>
-            </div>
+          
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
                     instructors?.map(instructor => <>
@@ -37,9 +49,9 @@ const Instructor = () => {
                                     <p>Country: {instructor.country}</p>
                                     <Link className="link-hover "><p>{instructor.email}</p></Link>
                                     <p>classes_taken: {instructor.classes_taken}</p>
-                                    {/* <div className="card-actions">
-                                        <button className="btn btn-primary"> </button>
-                                    </div> */}
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary">See Classes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
