@@ -1,14 +1,16 @@
 
 
-import  { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 
 import { AuthContext } from '../Pages/Provider/AuthProvider';
 
 const Signup = () => {
-    
- 
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/login";
+
 
     const { createUser } = useContext(AuthContext);
 
@@ -19,12 +21,16 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
-        console.log(name, email, password, photo);
+        const category = form.sub_category.value;
+        console.log(name, email, password, photo, category);
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
+                
                 console.log(user);
+                
+                navigate(from, { replace: true });
             })
             .catch(error => console.log(error))
 
@@ -58,6 +64,17 @@ const Signup = () => {
                                     <label className="label">
 
                                     </label>
+                                </div>
+                                <div className="form-control w-full">
+
+                                    <label className='mt-2' >Sub-Category</label>
+                                    <select className='h-12 mt-2 input input-bordered' name="sub_category" id='sub-category' >
+
+                                        <option value="frozen dolls">Admin</option>
+                                        <option value="animation characters">User</option>
+                                      
+                                    </select>
+
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
