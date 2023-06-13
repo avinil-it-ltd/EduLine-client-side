@@ -10,7 +10,7 @@ const PopularInstructor = () => {
         fetch('/public/instructor.json')
             .then(res => res.json())
             .then(data => {
-                setInstructor(data.instructors);
+                setInstructor(data);
 
             })
             .catch(error => console.log(error))
