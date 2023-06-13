@@ -15,6 +15,7 @@ const Signup = () => {
     const { createUser } = useContext(AuthContext);
 
     const handleSignup = event => {
+        console.log(event);
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
@@ -70,8 +71,9 @@ const Signup = () => {
                                     <label className='mt-2' >Sub-Category</label>
                                     <select className='h-12 mt-2 input input-bordered' name="sub_category" id='sub-category' >
 
-                                        <option value="frozen dolls">Admin</option>
-                                        <option value="animation characters">User</option>
+                                        <option value="admin">Admin</option>
+                                        <option value="user">User</option>
+                                        <option value="instructor">Instructor</option>
                                       
                                     </select>
 
