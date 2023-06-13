@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useState } from "react";
+// import React from 'react';
+
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
-const PopularInstructor = () => {
+const Instructor = () => {
     const [instructors, setInstructor] = useState([]);
 
     useEffect(() => {
@@ -15,18 +15,16 @@ const PopularInstructor = () => {
             })
             .catch(error => console.log(error))
     }, [])
-const selectInstructor = instructors?.slice(0,6);
 
     return (
         <div className="my-12 mx-auto container">
             <div className="font-mono text-center  my-9">
-                <h1 className="text-primary text-opacity-70 font-bold  text-4xl ">Popular Instructors Section</h1>
                 <p className="my-4 "><span className="text-orange-500">As language instructors</span>, you hold a significant role in shaping the language <br /> skills and cultural understanding of your students. Your dedication and expertise <br />
                  are key in creating an effective and inspiring learning environment.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
-                    selectInstructor?.map(instructor => <>
+                    instructors?.map(instructor => <>
 
                         <div>
 
@@ -39,6 +37,9 @@ const selectInstructor = instructors?.slice(0,6);
                                     <p>Country: {instructor.country}</p>
                                     <Link className="link-hover "><p>{instructor.email}</p></Link>
                                     <p>classes_taken: {instructor.classes_taken}</p>
+                                    {/* <div className="card-actions">
+                                        <button className="btn btn-primary"> </button>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -46,8 +47,7 @@ const selectInstructor = instructors?.slice(0,6);
                 }
             </div>
         </div>
-
     );
 };
 
-export default PopularInstructor;
+export default Instructor;

@@ -15,12 +15,21 @@ const Dashboard = () => {
 
             <div className="hidden px-3 py-4 w-52   lg:block shadow-lg">
                 <ul>
+                    {/* student access these routes */}
                     <li> <Link className="btn my-1 w-full " to="/dashboard/mySelectedClasses">My Selected Classes</Link></li>
                     <li> <Link className="btn my-1 w-full " to="/dashboard/myEnrolledCourse">My Enrolled Course</Link></li>
                     <li> <Link className="btn my-1  w-full" to="/dashboard/studentPayment">Payment</Link></li>
-               
+                    {/* Instructor access these routes */}
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/addClasses">Add Classes</Link></li>
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/myClasses">My Classes</Link></li>
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/totalEnrolledStudent">Total Enrolled Student</Link></li>
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/feedback">Feedback</Link></li>
+                    {/* Admin access these routes */}
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/manageClasses">Manage Classes</Link></li>
+                    <li> <Link className="btn my-1  w-full" to="/dashboard/manageUsers">Manage Users</Link></li>
+
                 </ul>
-                
+
 
             </div>
             <div className="drawer drawer-mobile">
@@ -39,9 +48,10 @@ const Dashboard = () => {
                         </div>
 
                         {/* student access content here */}
-                        <li>
-                            <Link to="/dashboard/mySelectedCourse">My Selected Course</Link>
-                        </li>
+                        <li> <Link className="btn my-1 w-full " to="/dashboard/mySelectedClasses">My Selected Classes</Link></li>
+                        <li> <Link className="btn my-1 w-full " to="/dashboard/myEnrolledCourse">My Enrolled Course</Link></li>
+                        <li> <Link className="btn my-1  w-full" to="/dashboard/studentPayment">Payment</Link></li>
+                        <li> <Link className="btn my-1  w-full" to="/dashboard/addClasses">Add Classes</Link></li>
 
                     </ul>
                 </div>

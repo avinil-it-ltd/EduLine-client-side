@@ -38,8 +38,8 @@ const Navbar = () => {
 
                                 <ul className="menu  px-1">
                                     <li> <Link onClick={handleLinkClick} to='/'><a>Home</a></Link></li>
-                                    <li> <Link onClick={handleLinkClick} to='/'><a>Instructors</a></Link></li>
-                                    <li> <Link onClick={handleLinkClick} to='/'> <a>Classes</a></Link></li>
+                                    <li> <Link onClick={handleLinkClick} to='/instructor'><a>Instructors</a></Link></li>
+                                    <li> <Link onClick={handleLinkClick} to='/classes'> <a>Classes</a></Link></li>
 
                                     <div className="collapse">
                                         <input type="checkbox" className="peer" />
@@ -47,9 +47,19 @@ const Navbar = () => {
                                             <Link onClick={handleLinkClick} to="/dashboard">Dashboard</Link>
                                         </div>
                                         <div className="collapse-content text-white">
+                                            {/* Student access these routes */}
                                             <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/mySelectedClasses'>My selected classes</Link></li>
                                             <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
                                             <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/studentPayment'>Payment</Link></li>
+                                            {/* Instructor access these routes */}
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/addClasses'>Add Classes</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myClasses'>My Classes</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/totalEnrolledStudent'>Total Enrolled Student</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/feedback'>Feedback</Link></li>
+                                            {/* Admin access these routes */}
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageClasses'>Manage Classes</Link></li>
+                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageUsers'>Manage users</Link></li>
+
                                         </div>
                                     </div>
                                 </ul>
@@ -65,7 +75,7 @@ const Navbar = () => {
 
 
 
-                        <div className="navbar  flex items-center  bg-base-100  justify-between">
+                        <div className="navbar  flex   bg-base-100  justify-between">
                             <div className="navbar-start">
                                 <Link onClick={handleLinkClick} to="/home" className="normal-case text-xl flex  " > <img className='w-16 mr-2' src={logo} alt="" /> EduLine</Link>
                             </div>
@@ -74,8 +84,8 @@ const Navbar = () => {
                             <div className="navbar-center hidden lg:flex">
                                 <ul className="menu menu-horizontal px-1">
                                     <li><Link onClick={handleLinkClick} to='/'><a>Home</a></Link></li>
-                                    <li><Link onClick={handleLinkClick} to='/'><a>Instructors</a></Link></li>
-                                    <li><Link onClick={handleLinkClick} to='/'> <a>Classes</a></Link></li>
+                                    <li><Link onClick={handleLinkClick} to='/instructor'><a>Instructors</a></Link></li>
+                                    <li><Link onClick={handleLinkClick} to='/classes'> <a>Classes</a></Link></li>
                                     <li><Link onClick={handleLinkClick} to='/dashboard'><a>Dashboard</a></Link></li>
                                 </ul>
                             </div>
