@@ -21,15 +21,7 @@ const Instructor = () => {
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/instructors')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setInstructor(data);
-
-    //         })
-    //         .catch(error => console.log(error))
-    // }, [])
+ 
 
     return (
         <div className="my-12 mx-auto container">

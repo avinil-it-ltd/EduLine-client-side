@@ -19,15 +19,6 @@ const Classes = () => {
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/api/classes')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setClasses(data);
-
-    //         })
-    //         .catch(error => console.log(error))
-    // }, [])
 
 
     return (
@@ -46,9 +37,12 @@ const Classes = () => {
                                     <img src={c.photo} alt="Shoes" className="rounded-xl h-32" />
                                 </figure>
                                 <div className="card-body items-center text-center font-mono">
-                                    <h2 className="card-title text-orange-500 font-mono font-bold">{c.Instructor_name}</h2>
-                                    
+                                    <h2 className="card-title text-orange-500 font-mono font-bold">{c.name}</h2>
+                                    <p>Instructor-name: {c.Instructor_name}</p>
                                     <Link className="link-hover "><p>{c.Instructor_email}</p></Link>
+                                    <p>Available seats: {c.Available_seat}</p>
+                                    <p>Price: {c.price}</p>
+                                    <button className="btn btn-primary">Select</button>
                                  
                                 </div>
                             </div>
