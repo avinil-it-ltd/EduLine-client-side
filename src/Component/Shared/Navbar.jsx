@@ -3,10 +3,11 @@ import logo from '../../assets/images/navLogo.png'
 import 'react-modern-drawer/dist/index.css'
 // import { FaRegUserCircle } from 'react-icons/fa'
 import { AuthContext } from "../Pages/Provider/AuthProvider";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import Drawer from 'react-modern-drawer'
 
+import logo1 from '../../assets/Screenshot_2023-06-13_230857-removebg-preview.png'
 const Navbar = () => {
 
     const [isOpen, setIsOpen] = React.useState(false)
@@ -17,10 +18,35 @@ const Navbar = () => {
     const handleLinkClick = () => {
         setIsOpen(false);
     };
+
+
+    // Get user
     const { user, handleSignOut } = useContext(AuthContext)
+    // const { user, handleSignOut } = useContext(AuthContext)
+    console.log(user)
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`https://eduline-server.onrender.com/users`);
+            if (response.ok) {
+                const data = await response.json();
+                setUsers(data);
+            } else {
+                // Error occurred while fetching data
+                console.error('Error fetching data!');
+            }
+        };
+
+        fetchData();
+    }, []);
+    console.log(users)
+
+    let PresentUser = users?.filter(c => c?.email == user?.email)[0]
+    console.log(PresentUser?.category)
+
     return (
         <div>
-            <header className=" body-font">
+            <header className="bg-slate-800 body-font">
                 <div className="container mx-auto ">
 
                     <div>
@@ -44,21 +70,46 @@ const Navbar = () => {
                                     <div className="collapse">
                                         <input type="checkbox" className="peer" />
                                         <div className="flex collapse-title">
-                                            <Link onClick={handleLinkClick} to="/dashboard">Dashboard</Link>
+                                            {user && <Link onClick={handleLinkClick} to="/dashboard">Dashboard</Link>}
+
                                         </div>
                                         <div className="collapse-content text-white">
                                             {/* Student access these routes */}
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/mySelectedClasses'>My selected classes</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/studentPayment'>Payment</Link></li>
+                                            {PresentUser?.category == "student" && <>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/mySelectedClasses'>My selected classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/studentPayment'>Payment</Link></li>
+                                            </>}
+
+
+
                                             {/* Instructor access these routes */}
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/addClasses'>Add Classes</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myClasses'>My Classes</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/totalEnrolledStudent'>Total Enrolled Student</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/feedback'>Feedback</Link></li>
+                                            {PresentUser?.category == "instructor" && <>
+
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/addClasses'>Add Classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myClasses'>My Classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/totalEnrolledStudent'>Total Enrolled Student</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/feedback'>Feedback</Link></li>
+                                            </>}
+
                                             {/* Admin access these routes */}
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageClasses'>Manage Classes</Link></li>
-                                            <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageUsers'>Manage users</Link></li>
+                                            {PresentUser?.category == "admin" && <>
+
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/mySelectedClasses'>My selected classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myEnrolledCourse'>My Enrolled classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/studentPayment'>Payment</Link></li>
+
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/addClasses'>Add Classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/myClasses'>My Classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/totalEnrolledStudent'>Total Enrolled Student</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/feedback'>Feedback</Link></li>
+
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageClasses'>Manage Classes</Link></li>
+                                                <li className="text-white"><Link onClick={handleLinkClick} to='/dashboard/manageUsers'>Manage users</Link></li>
+                                            </>
+
+                                            }
+
 
                                         </div>
                                     </div>
@@ -75,36 +126,31 @@ const Navbar = () => {
 
 
 
-                        <div className="navbar  flex   bg-base-100  justify-between">
+                        <div className="navbar  flex   bg-slate-800 shadow-xl text-white justify-between">
                             <div className="navbar-start">
-                                <Link onClick={handleLinkClick} to="/home" className="normal-case text-xl flex  " > <img className='w-16 mr-2' src={logo} alt="" /> EduLine</Link>
+                                <Link onClick={handleLinkClick} to="/home" className="normal-case text-xl flex justify-center items-center " > <img className='w-16 mr-2' src={logo1} alt="" /> Language Tutor</Link>
                             </div>
 
 
                             <div className="navbar-center hidden lg:flex">
                                 <ul className="menu menu-horizontal px-1">
-                                    <li><Link onClick={handleLinkClick} to='/'><a>Home</a></Link></li>
-                                    <li><Link onClick={handleLinkClick} to='/instructor'><a>Instructors</a></Link></li>
-                                    <li><Link onClick={handleLinkClick} to='/classes'> <a>Classes</a></Link></li>
-                                    <li><Link onClick={handleLinkClick} to='/dashboard'><a>Dashboard</a></Link></li>
+                                    <li><Link onClick={handleLinkClick}  className="text-white" to='/'><a>Home</a></Link></li>
+                                    <li><Link onClick={handleLinkClick}  className="text-white" to='/instructor'><a>Instructors</a></Link></li>
+                                    <li><Link onClick={handleLinkClick}  className="text-white" to='/classes'> <a>Classes</a></Link></li>
+                                    <li><Link onClick={handleLinkClick}   className="text-white" to='/dashboard'><a>Dashboard</a></Link></li>
                                 </ul>
                             </div>
                             <div className="navbar-end gap-2 flex justify-center items-center ">
-
-
-
-
-                                {/* <FaRegUserCircle style={{ fontSize: '2rem' }} /> */}
-                                <div className="dropdown dropdown-end z-50">
-                                    <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                                <div className="dropdown dropdown-end z-50 bg-slate-800 text-white">
+                                    <label tabIndex="0" className="btn btn-ghost btn-circle avatar ring ring-primary ring-offset-base-100 ring-offset-2">
                                         <div className="w-10 rounded-full">
-                                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            <img src={PresentUser?.photo} />
                                         </div>
                                     </label>
-                                    <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-slate-800 text-white rounded-box w-52">
                                         <li className="w-full my-2  items-center justify-center  text-center">
-                                            <a className="text-center btn btn-outline w-full btn-primary">
-                                                Profile
+                                            <a className="text-center items-center justify-center  w-full ">
+                                                {PresentUser?.name}
                                             </a>
                                         </li>
 
@@ -113,16 +159,16 @@ const Navbar = () => {
                                         <li className="">
                                             {
                                                 user ?
-                                                    <Link  to='/signup' onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5 w-full">Sign Out </Link>
+                                                    <Link to='/signup' onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5 w-full">Sign Out </Link>
                                                     :
-                                                    <Link  to='/login' className="btn btn-outline w-full btn-primary text-opacity-70 font-bold px-5">Sign in </Link>
+                                                    <Link to='/login' className="btn btn-outline w-full btn-primary text-opacity-70 font-bold px-5">Sign in </Link>
 
                                             }
                                         </li>
                                     </ul>
                                 </div>
 
-
+                              
                             </div>
 
 
@@ -142,31 +188,7 @@ const Navbar = () => {
 
 
 
-            {/* 
-            <div className="navbar bg-base-200 shadow-md font-bold font-mono px-4 ">
-                <div className="navbar-start">
-                    <img className="h-12 w-12" src={logo} alt="" />
-                    <a className="text-2xl ms-4">EduLine</a>
-                </div>
-                <div className="navbar-center  lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        <Link to='/'><li><a>Home</a></li></Link>
-                        <Link to='/'><li><a>Instructors</a></li></Link>
-                        <Link to='/'> <li><a>Classes</a></li></Link>
-                        <Link to='/dashboard'><li><a>Dashboard</a></li></Link>
-                    </ul>
-                </div>
-                <div className="navbar-end gap-2">
-                    <FaRegUserCircle style={{ fontSize: '2rem' }} />
-                    {
-                        user ?
-                            <Link to='/signup'><button onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5">Sign Out</button></Link>
-                            :
-                            <Link to='/login'><button className="btn btn-outline btn-primary text-opacity-70 font-bold px-5">Sign in</button></Link>
-
-                    }
-                </div>
-            </div> */}
+          
 
         </div>
     );

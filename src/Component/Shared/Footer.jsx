@@ -1,10 +1,10 @@
-import logo from '../../assets/images/navLogo.png'
+import logo from '../../assets/Screenshot_2023-06-13_230857-removebg-preview.png'
 import { FaFacebook, FaTwitter, FaYoutube  } from 'react-icons/fa'
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="footer mx-auto container p-10 bg-orange-200 shadow-md font-mono  text-base-content">
+        <div className='bg-slate-800'>
+            <footer className="footer mx-auto  p-10 bg-slate-200 shadow-md font-mono  text-base-content">
                 <div>
                     <span className="footer-title text-primary font-bold">Quick Access</span>
                     <a className="link link-hover">Apply to Teach</a>
@@ -44,14 +44,14 @@ const Footer = () => {
                     <a className="link link-hover">Policy</a>
                 </div>
             </footer>
-            <footer className="footer container mx-auto px-10 py-4 border-t bg-orange-200 text-base-content font-mono font-bold border-base-300">
+            <footer className="footer  mx-auto px-10 py-4 border-t bg-slate-200 text-base-content font-mono font-bold border-base-300">
                 <div className="items-center grid-flow-col">
-                    <img src={logo} alt="" />
+                    <img className=" w-16 "src={logo} alt="" />
                 
                    <div>
                    <p className="font-bold">
-                        EduLine, chawkbazar-1240,
-                        Chottogram.
+                        language Tutor, 1240,
+                        Chattogram.
                     </p>
                     <p >Copyright © 2023 - All right reserved</p>
                    </div>

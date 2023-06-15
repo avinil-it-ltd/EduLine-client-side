@@ -8,7 +8,7 @@ const Instructor = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/instructors`);
+            const response = await fetch(`https://eduline-server.onrender.com/api/instructors`);
             if (response.ok) {
                 const data = await response.json();
                 setInstructor(data);
@@ -22,7 +22,7 @@ const Instructor = () => {
     }, []);
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/instructors')
+    //     fetch('https://eduline-server.onrender.com/instructors')
     //         .then(res => res.json())
     //         .then(data => {
     //             setInstructor(data);
@@ -32,7 +32,7 @@ const Instructor = () => {
     // }, [])
 
     return (
-        <div className="my-12 mx-auto container">
+        <div className="my-12 mx-auto  container">
           
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
@@ -40,17 +40,17 @@ const Instructor = () => {
 
                         <div>
 
-                            <div className="card w-96 bg-base-100 shadow-xl">
-                                <figure className="px-10 pt-10">
-                                    <img src={instructor.image} alt="Shoes" className="rounded-xl h-32" />
+                            <div className="card w-96 bg-slate-200 shadow-xl">
+                                <figure className="">
+                                    <img src={instructor.image} alt="Shoes" className="rounded-xl px-2 h-60 w-full" />
                                 </figure>
-                                <div className="card-body items-center text-center font-mono">
-                                    <h2 className="card-title text-orange-500 font-mono font-bold">{instructor.name}</h2>
+                                <div className="card-body  font-mono">
+                                    <h2 className="card-title text-orange-500 font-mono font-bold">Name: {instructor.name}</h2>
                                     <p>Country: {instructor.country}</p>
                                     <Link className="link-hover "><p>{instructor.email}</p></Link>
                                     <p>classes_taken: {instructor.classes_taken}</p>
-                                    <div className="card-actions">
-                                        <button className="btn btn-primary">See Classes</button>
+                                    <div className="card-actions w-full">
+                                        <button className="btn btn-primary w-full">See Classes</button>
                                     </div>
                                 </div>
                             </div>
