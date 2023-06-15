@@ -7,7 +7,7 @@ const MyClasses = () => {
     const [SelectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/classes`);
+            const response = await fetch(`https://eduline-server.onrender.com/api/classes`);
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)

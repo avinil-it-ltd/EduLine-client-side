@@ -27,7 +27,7 @@ const Navbar = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/users`);
+            const response = await fetch(`https://eduline-server.onrender.com/users`);
             if (response.ok) {
                 const data = await response.json();
                 setUsers(data);

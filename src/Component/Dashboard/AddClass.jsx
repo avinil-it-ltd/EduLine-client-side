@@ -31,7 +31,7 @@ const AddClass = () => {
 
         console.log(addClasses);
 
-        fetch('http://localhost:5000/api/classes', {
+        fetch('https://eduline-server.onrender.com/api/classes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

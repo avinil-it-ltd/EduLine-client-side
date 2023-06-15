@@ -8,7 +8,7 @@ const Instructor = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/instructors`);
+            const response = await fetch(`https://eduline-server.onrender.com/api/instructors`);
             if (response.ok) {
                 const data = await response.json();
                 setInstructor(data);
@@ -22,7 +22,7 @@ const Instructor = () => {
     }, []);
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/instructors')
+    //     fetch('https://eduline-server.onrender.com/instructors')
     //         .then(res => res.json())
     //         .then(data => {
     //             setInstructor(data);

@@ -11,7 +11,7 @@ const Classes = () => {
     const [SelectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/classes`);
+            const response = await fetch(`https://eduline-server.onrender.com/api/classes`);
             if (response.ok) {
                 const data = await response.json();
                 console.log(data)
@@ -35,7 +35,7 @@ const Classes = () => {
     
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/api/classes')
+    //     fetch('https://eduline-server.onrender.com/api/classes')
     //         .then(res => res.json())
     //         .then(data => {
     //             setClasses(data);
@@ -58,7 +58,7 @@ const Classes = () => {
         }
         console.log("HELLO",selectClass)
 
-        fetch('http://localhost:5000/selectedClasses', {
+        fetch('https://eduline-server.onrender.com/selectedClasses', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

@@ -9,7 +9,7 @@ const MySelectedClasses = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/selectedClasses`);
+            const response = await fetch(`https://eduline-server.onrender.com/selectedClasses`);
             if (response.ok) {
                 const data = await response.json();
                 setSelectedClasses(data);
@@ -25,7 +25,7 @@ const MySelectedClasses = () => {
     // const [SelectedClasses, setSelectedClasses] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/api/classes`);
+            const response = await fetch(`https://eduline-server.onrender.com/api/classes`);
             if (response.ok) {
                 const data = await response.json();
                 setClasses(data);

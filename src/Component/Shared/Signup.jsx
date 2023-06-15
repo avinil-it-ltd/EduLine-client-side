@@ -36,7 +36,7 @@ const Signup = () => {
             })
             .catch(error => console.log(error))
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://eduline-server.onrender.com/user', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

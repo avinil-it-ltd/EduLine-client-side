@@ -10,7 +10,7 @@ const ManageClasses = () => {
   // const [SelectedClasses, setSelectedClasses] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:5000/api/classes`);
+      const response = await fetch(`https://eduline-server.onrender.com/api/classes`);
       if (response.ok) {
         const data = await response.json();
         setClasses(data);
@@ -27,7 +27,7 @@ const ManageClasses = () => {
   // Updating status by function
   const handleUpdatedStatus = (_id) => {
     console.log(_id)
-    const url = `http://localhost:5000/classRequest/${_id}`;
+    const url = `https://eduline-server.onrender.com/classRequest/${_id}`;
     const updatedStatus = "approved";
     const updatedClass = { chk: updatedStatus }
     console.log(updatedClass)
@@ -47,7 +47,7 @@ const ManageClasses = () => {
   const handleDelete = (_id) => {
     // const confirm = window.confirm('Do you want to delete?')
     // if (confirm) {
-    const url = `http://localhost:5000/classRequest/${_id}`;
+    const url = `https://eduline-server.onrender.com/classRequest/${_id}`;
     fetch(url, {
       method: 'DELETE',
     })

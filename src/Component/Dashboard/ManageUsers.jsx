@@ -9,7 +9,7 @@ const ManageUsers = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:5000/users`);
+            const response = await fetch(`https://eduline-server.onrender.com/users`);
             if (response.ok) {
                 const data = await response.json();
                 setUsers(data);
@@ -26,7 +26,7 @@ const ManageUsers = () => {
 
     const handleUpdatedStatus = (_id,c) => {
         console.log(_id)
-        const url = `http://localhost:5000/userRequest/${_id}`;
+        const url = `https://eduline-server.onrender.com/userRequest/${_id}`;
         const updatedStatus = c;
         const updatedClass = { category: updatedStatus }
         console.log(updatedClass)
