@@ -15,6 +15,7 @@ const AddClass = () => {
         const Instructor_email = form.Instructor_email.value;
         const Available_seat = form.Available_seat.value;
         const price = form.price.value;
+        const chk  = "pending";
 
 
         const addClasses = {
@@ -23,7 +24,8 @@ const AddClass = () => {
             Instructor_name,
             Instructor_email,
             price,
-            Available_seat
+            Available_seat,
+            chk
 
         }
 
@@ -53,7 +55,7 @@ const AddClass = () => {
             <div className="hero   font-mono">
                 <div className="w-2/3 hero-content flex-col lg:flex-col">
 
-                    <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full lg:w-96 shadow-2xl bg-base-100">
                         <div className="card-body">
                             <h1 className="text-3xl text-center text-primary text-opacity-70 font-bold font-mono">Add A CLass</h1>
                             <form onSubmit={handleAddToy}>
@@ -82,7 +84,7 @@ const AddClass = () => {
                                         <label className="label">
                                             <span className="label-text">Instructor email</span>
                                         </label>
-                                        <input type="email" name='Instructor_email' value={user?.email} placeholder="instructor email" className="input input-bordered " />
+                                        <input type="email" name='Instructor_email' placeholder="instructor email" className="input input-bordered " />
                                     </div>
                                 </div>
                                 <div className='flex gap-6 font-bold'>
