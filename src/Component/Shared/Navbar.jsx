@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/navLogo.png'
 import 'react-modern-drawer/dist/index.css'
-import { FaRegUserCircle } from 'react-icons/fa'
+// import { FaRegUserCircle } from 'react-icons/fa'
 import { AuthContext } from "../Pages/Provider/AuthProvider";
 import React from "react";
 import { useContext } from "react";
@@ -90,14 +90,39 @@ const Navbar = () => {
                                 </ul>
                             </div>
                             <div className="navbar-end gap-2 flex justify-center items-center ">
-                                <FaRegUserCircle style={{ fontSize: '2rem' }} />
-                                {
-                                    user ?
-                                        <Link to='/signup'><button onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5">Sign Out</button></Link>
-                                        :
-                                        <Link to='/login'><button className="btn btn-outline btn-primary text-opacity-70 font-bold px-5">Sign in</button></Link>
 
-                                }
+
+
+
+                                {/* <FaRegUserCircle style={{ fontSize: '2rem' }} /> */}
+                                <div className="dropdown dropdown-end z-50">
+                                    <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        </div>
+                                    </label>
+                                    <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                        <li className="w-full my-2  items-center justify-center  text-center">
+                                            <a className="text-center btn btn-outline w-full btn-primary">
+                                                Profile
+                                            </a>
+                                        </li>
+
+
+
+                                        <li className="">
+                                            {
+                                                user ?
+                                                    <Link  to='/signup' onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5 w-full">Sign Out </Link>
+                                                    :
+                                                    <Link  to='/login' className="btn btn-outline w-full btn-primary text-opacity-70 font-bold px-5">Sign in </Link>
+
+                                            }
+                                        </li>
+                                    </ul>
+                                </div>
+
+
                             </div>
 
 

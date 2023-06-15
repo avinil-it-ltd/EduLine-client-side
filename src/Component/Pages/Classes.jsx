@@ -50,6 +50,9 @@ const Classes = () => {
                                     
                                     <Link className="link-hover "><p>{c.Instructor_email}</p></Link>
                                  
+                                 
+
+                                
                                 </div>
                             </div>
                         </div>
