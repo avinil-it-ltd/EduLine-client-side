@@ -140,43 +140,46 @@ const Navbar = () => {
                                     <li><Link onClick={handleLinkClick} to='/dashboard'><a>Dashboard</a></Link></li>
                                 </ul>
                             </div>
+
                             <div className="navbar-end gap-2 flex justify-center items-center ">
-                                <div className="dropdown dropdown-end z-50">
-                                    <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img src={PresentUser?.photo} />
-                                        </div>
-                                    </label>
-                                    <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                        <li className="w-full my-2  items-center justify-center  text-center">
-                                            <a className="text-center btn btn-outline w-full btn-primary">
-                                                {PresentUser?.name}
-                                            </a>
-                                        </li>
+                                {user ?
+                                    <div className="dropdown dropdown-end z-50">
+
+                                        <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
+                                            <div className="w-10 rounded-full">
+                                                <img src={PresentUser?.photo} />
+                                            </div>
+                                        </label>
+                                        <ul tabIndex="0" className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                            <li className="w-full my-2  items-center justify-center  text-center">
+                                                <a className="text-center btn btn-outline w-full btn-primary">
+                                                    {PresentUser?.name}
+                                                </a>
+                                            </li>
 
 
 
-                                        <li className="">
-                                            {
-                                                user ?
-                                                    <Link to='/signup' onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5 w-full">Sign Out </Link>
-                                                    :
-                                                    <Link to='/login' className="btn btn-outline w-full btn-primary text-opacity-70 font-bold px-5">Sign in </Link>
+                                            <li className="">
 
-                                            }
-                                        </li>
-                                    </ul>
-                                </div>
+                                                <Link to='/signup' onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5 w-full">Sign Out </Link>
 
-                                {/* <FaRegUserCircle style={{ fontSize: '2rem' }} />
-                                {
-                                    user ?
-                                        <Link to='/signup'><button onClick={() => handleSignOut()} className="btn  btn-primary bg-opacity-70 text-white font-bold px-5">Sign Out</button></Link>
-                                        :
-                                        <Link to='/login'><button className="btn btn-outline btn-primary text-opacity-70 font-bold px-5">Sign in</button></Link>
 
-                                } */}
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                    :
+                                    <div className="dropdown dropdown-end z-50 ">
+
+                                        <Link to='/login' className="btn btn-outline w-full btn-primary text-opacity-70 font-bold px-5">Sign in </Link>
+                                    </div>
+
+
+                                }
+
                             </div>
+
 
 
                             <button className='lg:hidden' onClick={toggleDrawer}>
